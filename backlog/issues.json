@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "issues": [
+    {
+      "id": "RA-001",
+      "number": 1,
+      "url": "https://github.com/Floums08/recursive-agent/issues/1"
+    },
+    {
+      "id": "RA-002",
+      "number": 2,
+      "url": "https://github.com/Floums08/recursive-agent/issues/2"
+    },
+    {
+      "id": "RA-003",
+      "number": 3,
+      "url": "https://github.com/Floums08/recursive-agent/issues/3"
+    },
+    {
+      "id": "RA-004",
+      "number": 4,
+      "url": "https://github.com/Floums08/recursive-agent/issues/4"
+    },
+    {
+      "id": "RA-005",
+      "number": 5,
+      "url": "https://github.com/Floums08/recursive-agent/issues/5"
+    },
+    {
+      "id": "RA-006",
+      "number": 6,
+      "url": "https://github.com/Floums08/recursive-agent/issues/6"
+    },
+    {
+      "id": "RA-007",
+      "number": 7,
+      "url": "https://github.com/Floums08/recursive-agent/issues/7"
+    },
+    {
+      "id": "RA-008",
+      "number": 8,
+      "url": "https://github.com/Floums08/recursive-agent/issues/8"
+    },
+    {
+      "id": "RA-009",
+      "number": 9,
+      "url": "https://github.com/Floums08/recursive-agent/issues/9"
+    },
+    {
+      "id": "RA-010",
+      "number": 10,
+      "url": "https://github.com/Floums08/recursive-agent/issues/10"
+    },
+    {
+      "id": "RA-011",
+      "number": 11,
+      "url": "https://github.com/Floums08/recursive-agent/issues/11"
+    },
+    {
+      "id": "RA-012",
+      "number": 12,
+      "url": "https://github.com/Floums08/recursive-agent/issues/12"
+    },
+    {
+      "id": "RA-013",
+      "number": 13,
+      "url": "https://github.com/Floums08/recursive-agent/issues/13"
+    },
+    {
+      "id": "RA-014",
+      "number": 14,
+      "url": "https://github.com/Floums08/recursive-agent/issues/14"
+    },
+    {
+      "id": "RA-015",
+      "number": 15,
+      "url": "https://github.com/Floums08/recursive-agent/issues/15"
+    },
+    {
+      "id": "RA-016",
+      "number": 16,
+      "url": "https://github.com/Floums08/recursive-agent/issues/16"
+    }
+  ]
+}

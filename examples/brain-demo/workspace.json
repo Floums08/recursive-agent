@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "title": "Fictitious work knowledge base",
+  "domains": [{"id": "agency-clients", "label": "Demo projects"}],
+  "vaults": [{"id": "demo-work", "title": "Fictitious project", "domain_id": "agency-clients", "path": "vaults/demo-work"}],
+  "external_vaults": []
+}

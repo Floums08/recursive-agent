@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "vault_id": "demo-work",
+  "revision": 1,
+  "events": [],
+  "records": [
+    {
+      "id": "DEMO-001",
+      "statement": "Verify whether the example upload error is still reproducible before planning a repair.",
+      "type": "task",
+      "review_status": "candidate",
+      "project_id": "fictitious-app",
+      "observed_at": "2026-09-15T09:00:00Z",
+      "last_verified_at": null,
+      "current_validity": "historical_not_revalidated",
+      "external_execution_verified": false,
+      "source_refs": [{"role": "user", "source_file": "sources/fictitious-note.md", "source_version": "demo-v1", "message_at": "2026-09-15T09:00:00Z"}],
+      "conflicts_with": [],
+      "supersedes": []
+    },
+    {
+      "id": "DEMO-002",
+      "statement": "Check the documented retry policy against the accepted workflow contract.",
+      "type": "requirement",
+      "review_status": "candidate",
+      "project_id": "fictitious-workflow",
+      "observed_at": "2026-09-25T10:00:00Z",
+      "last_verified_at": null,
+      "current_validity": "historical_not_revalidated",
+      "external_execution_verified": false,
+      "source_refs": [{"role": "user", "source_file": "sources/fictitious-contract.md", "source_version": "demo-v1", "message_at": "2026-09-25T10:00:00Z"}],
+      "conflicts_with": [],
+      "supersedes": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "deduplicate": true,
+  "max_retries": 2,
+  "retry_statuses": [
+    429,
+    500,
+    502,
+    503,
+    504
+  ]
+}

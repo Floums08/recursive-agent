@@ -1,0 +1,637 @@
+{
+  "version": 1,
+  "run_id": "20261003T080914Z-fef60bf1",
+  "provider": "demo",
+  "project": "Tres dominios — demostración sintética",
+  "config_hash": "5eb24b9b26573a2607f7aff3f65da19631ee65241d104ab5d363345943716690",
+  "source_hash": "04c4e20e29ada37a0f3746bf2c5c53a4020ef76d972b14864ac6024eb7fb8bc8",
+  "status": "benchmark_complete",
+  "iterations": [
+    {
+      "iteration": 1,
+      "decision": "accepted",
+      "reason": "train_and_holdout_improved",
+      "domain": "app",
+      "proposal_hash": "ecb3e0c68495008553ff08d28cde21eb677af4e9eeff948e609b8e0656caf644",
+      "evaluation": {
+        "train": {
+          "suite_id": "recursive-workbench-demo-v1:train",
+          "metrics": {
+            "app": 1.0,
+            "docs": 0.0,
+            "workflow": 0.3333333333333333
+          },
+          "cases": {
+            "train.app.plain": {
+              "passed": true,
+              "detail": "Expected 10.00; received 10.00"
+            },
+            "train.app.half_cent": {
+              "passed": true,
+              "detail": "Expected 0.06; received 0.06"
+            },
+            "train.app.discount_tax": {
+              "passed": true,
+              "detail": "Expected 108.90; received 108.90"
+            },
+            "train.workflow.duplicate": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['A'], 'attempts': 1, 'failed': 0, 'skipped': 1}; received {'delivered': ['A', 'A'], 'attempts': 2, 'failed': 0, 'skipped': 0}"
+            },
+            "train.workflow.transient": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['B'], 'attempts': 2, 'failed': 0, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "train.workflow.terminal": {
+              "passed": true,
+              "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "train.docs.structure": {
+              "passed": false,
+              "detail": "Need >=200 characters and headings Objetivo, Uso, Recuperación, Validación"
+            },
+            "train.docs.source_links": {
+              "passed": false,
+              "detail": "Link both local pricing and workflow JSON; all local links must resolve inside the workspace"
+            },
+            "train.docs.configuration": {
+              "passed": false,
+              "detail": "Explain rounding, tax_after_discount, deduplicate, max_retries and retry_statuses"
+            },
+            "train.docs.recuperacion": {
+              "passed": false,
+              "detail": "recuperacion needs >=60 characters and at least one concrete checklist step"
+            },
+            "train.docs.validacion": {
+              "passed": false,
+              "detail": "validacion needs >=60 characters and at least one concrete checklist step"
+            }
+          },
+          "critical_pass": true
+        },
+        "holdout": {
+          "suite_id": "recursive-workbench-demo-v1:holdout",
+          "metrics": {
+            "app": 1.0,
+            "docs": 0.0,
+            "workflow": 0.4
+          },
+          "cases": {
+            "holdout.app.zero": {
+              "passed": true,
+              "detail": "Expected 0.00; received 0.00"
+            },
+            "holdout.app.round_up": {
+              "passed": true,
+              "detail": "Expected 24.19; received 24.19"
+            },
+            "holdout.app.discount_fraction": {
+              "passed": true,
+              "detail": "Expected 81.55; received 81.55"
+            },
+            "holdout.app.full_discount": {
+              "passed": true,
+              "detail": "Expected 0.00; received 0.00"
+            },
+            "holdout.workflow.rate_limit": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['D'], 'attempts': 3, 'failed': 0, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.distinct_events": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['E', 'F'], 'attempts': 2, 'failed': 0, 'skipped': 1}; received {'delivered': ['E', 'F', 'E'], 'attempts': 3, 'failed': 0, 'skipped': 0}"
+            },
+            "holdout.workflow.auth_terminal": {
+              "passed": true,
+              "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.retry_exhaustion": {
+              "passed": false,
+              "detail": "Expected {'delivered': [], 'attempts': 3, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.redelivery_after_failure": {
+              "passed": true,
+              "detail": "Expected {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}; received {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.docs.pricing_contract": {
+              "passed": false,
+              "detail": "Document half_up rounding and discount/tax behavior"
+            },
+            "holdout.docs.retry_contract": {
+              "passed": false,
+              "detail": "Document terminal 400, transient 503 and the retry limit"
+            },
+            "holdout.docs.idempotency_contract": {
+              "passed": false,
+              "detail": "Document duplicate-event behavior using event_id"
+            },
+            "holdout.docs.link_integrity": {
+              "passed": false,
+              "detail": "Operational documentation must retain two existing local references without broken links"
+            }
+          },
+          "critical_pass": true
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "decision": "accepted",
+      "reason": "train_and_holdout_improved",
+      "domain": "docs",
+      "proposal_hash": "498d635a5f5fbbb22df66b417f84f567dff88aa00fa3db95180c7b772ad331a7",
+      "evaluation": {
+        "train": {
+          "suite_id": "recursive-workbench-demo-v1:train",
+          "metrics": {
+            "app": 1.0,
+            "docs": 1.0,
+            "workflow": 0.3333333333333333
+          },
+          "cases": {
+            "train.app.plain": {
+              "passed": true,
+              "detail": "Expected 10.00; received 10.00"
+            },
+            "train.app.half_cent": {
+              "passed": true,
+              "detail": "Expected 0.06; received 0.06"
+            },
+            "train.app.discount_tax": {
+              "passed": true,
+              "detail": "Expected 108.90; received 108.90"
+            },
+            "train.workflow.duplicate": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['A'], 'attempts': 1, 'failed': 0, 'skipped': 1}; received {'delivered': ['A', 'A'], 'attempts': 2, 'failed': 0, 'skipped': 0}"
+            },
+            "train.workflow.transient": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['B'], 'attempts': 2, 'failed': 0, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "train.workflow.terminal": {
+              "passed": true,
+              "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "train.docs.structure": {
+              "passed": true,
+              "detail": "Need >=200 characters and headings Objetivo, Uso, Recuperación, Validación"
+            },
+            "train.docs.source_links": {
+              "passed": true,
+              "detail": "Link both local pricing and workflow JSON; all local links must resolve inside the workspace"
+            },
+            "train.docs.configuration": {
+              "passed": true,
+              "detail": "Explain rounding, tax_after_discount, deduplicate, max_retries and retry_statuses"
+            },
+            "train.docs.recuperacion": {
+              "passed": true,
+              "detail": "recuperacion needs >=60 characters and at least one concrete checklist step"
+            },
+            "train.docs.validacion": {
+              "passed": true,
+              "detail": "validacion needs >=60 characters and at least one concrete checklist step"
+            }
+          },
+          "critical_pass": true
+        },
+        "holdout": {
+          "suite_id": "recursive-workbench-demo-v1:holdout",
+          "metrics": {
+            "app": 1.0,
+            "docs": 1.0,
+            "workflow": 0.4
+          },
+          "cases": {
+            "holdout.app.zero": {
+              "passed": true,
+              "detail": "Expected 0.00; received 0.00"
+            },
+            "holdout.app.round_up": {
+              "passed": true,
+              "detail": "Expected 24.19; received 24.19"
+            },
+            "holdout.app.discount_fraction": {
+              "passed": true,
+              "detail": "Expected 81.55; received 81.55"
+            },
+            "holdout.app.full_discount": {
+              "passed": true,
+              "detail": "Expected 0.00; received 0.00"
+            },
+            "holdout.workflow.rate_limit": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['D'], 'attempts': 3, 'failed': 0, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.distinct_events": {
+              "passed": false,
+              "detail": "Expected {'delivered': ['E', 'F'], 'attempts': 2, 'failed': 0, 'skipped': 1}; received {'delivered': ['E', 'F', 'E'], 'attempts': 3, 'failed': 0, 'skipped': 0}"
+            },
+            "holdout.workflow.auth_terminal": {
+              "passed": true,
+              "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.retry_exhaustion": {
+              "passed": false,
+              "detail": "Expected {'delivered': [], 'attempts': 3, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.redelivery_after_failure": {
+              "passed": true,
+              "detail": "Expected {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}; received {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.docs.pricing_contract": {
+              "passed": true,
+              "detail": "Document half_up rounding and discount/tax behavior"
+            },
+            "holdout.docs.retry_contract": {
+              "passed": true,
+              "detail": "Document terminal 400, transient 503 and the retry limit"
+            },
+            "holdout.docs.idempotency_contract": {
+              "passed": true,
+              "detail": "Document duplicate-event behavior using event_id"
+            },
+            "holdout.docs.link_integrity": {
+              "passed": true,
+              "detail": "Operational documentation must retain two existing local references without broken links"
+            }
+          },
+          "critical_pass": true
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "decision": "accepted",
+      "reason": "train_and_holdout_improved",
+      "domain": "workflow",
+      "proposal_hash": "bfff257e54c4e6bc0cf5553f67c56faa6b62f956c84cd881f4fd1665519c102e",
+      "evaluation": {
+        "train": {
+          "suite_id": "recursive-workbench-demo-v1:train",
+          "metrics": {
+            "app": 1.0,
+            "docs": 1.0,
+            "workflow": 1.0
+          },
+          "cases": {
+            "train.app.plain": {
+              "passed": true,
+              "detail": "Expected 10.00; received 10.00"
+            },
+            "train.app.half_cent": {
+              "passed": true,
+              "detail": "Expected 0.06; received 0.06"
+            },
+            "train.app.discount_tax": {
+              "passed": true,
+              "detail": "Expected 108.90; received 108.90"
+            },
+            "train.workflow.duplicate": {
+              "passed": true,
+              "detail": "Expected {'delivered': ['A'], 'attempts': 1, 'failed': 0, 'skipped': 1}; received {'delivered': ['A'], 'attempts': 1, 'failed': 0, 'skipped': 1}"
+            },
+            "train.workflow.transient": {
+              "passed": true,
+              "detail": "Expected {'delivered': ['B'], 'attempts': 2, 'failed': 0, 'skipped': 0}; received {'delivered': ['B'], 'attempts': 2, 'failed': 0, 'skipped': 0}"
+            },
+            "train.workflow.terminal": {
+              "passed": true,
+              "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "train.docs.structure": {
+              "passed": true,
+              "detail": "Need >=200 characters and headings Objetivo, Uso, Recuperación, Validación"
+            },
+            "train.docs.source_links": {
+              "passed": true,
+              "detail": "Link both local pricing and workflow JSON; all local links must resolve inside the workspace"
+            },
+            "train.docs.configuration": {
+              "passed": true,
+              "detail": "Explain rounding, tax_after_discount, deduplicate, max_retries and retry_statuses"
+            },
+            "train.docs.recuperacion": {
+              "passed": true,
+              "detail": "recuperacion needs >=60 characters and at least one concrete checklist step"
+            },
+            "train.docs.validacion": {
+              "passed": true,
+              "detail": "validacion needs >=60 characters and at least one concrete checklist step"
+            }
+          },
+          "critical_pass": true
+        },
+        "holdout": {
+          "suite_id": "recursive-workbench-demo-v1:holdout",
+          "metrics": {
+            "app": 1.0,
+            "docs": 1.0,
+            "workflow": 1.0
+          },
+          "cases": {
+            "holdout.app.zero": {
+              "passed": true,
+              "detail": "Expected 0.00; received 0.00"
+            },
+            "holdout.app.round_up": {
+              "passed": true,
+              "detail": "Expected 24.19; received 24.19"
+            },
+            "holdout.app.discount_fraction": {
+              "passed": true,
+              "detail": "Expected 81.55; received 81.55"
+            },
+            "holdout.app.full_discount": {
+              "passed": true,
+              "detail": "Expected 0.00; received 0.00"
+            },
+            "holdout.workflow.rate_limit": {
+              "passed": true,
+              "detail": "Expected {'delivered': ['D'], 'attempts': 3, 'failed': 0, 'skipped': 0}; received {'delivered': ['D'], 'attempts': 3, 'failed': 0, 'skipped': 0}"
+            },
+            "holdout.workflow.distinct_events": {
+              "passed": true,
+              "detail": "Expected {'delivered': ['E', 'F'], 'attempts': 2, 'failed': 0, 'skipped': 1}; received {'delivered': ['E', 'F'], 'attempts': 2, 'failed': 0, 'skipped': 1}"
+            },
+            "holdout.workflow.auth_terminal": {
+              "passed": true,
+              "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.retry_exhaustion": {
+              "passed": true,
+              "detail": "Expected {'delivered': [], 'attempts': 3, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 3, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.workflow.redelivery_after_failure": {
+              "passed": true,
+              "detail": "Expected {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}; received {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}"
+            },
+            "holdout.docs.pricing_contract": {
+              "passed": true,
+              "detail": "Document half_up rounding and discount/tax behavior"
+            },
+            "holdout.docs.retry_contract": {
+              "passed": true,
+              "detail": "Document terminal 400, transient 503 and the retry limit"
+            },
+            "holdout.docs.idempotency_contract": {
+              "passed": true,
+              "detail": "Document duplicate-event behavior using event_id"
+            },
+            "holdout.docs.link_integrity": {
+              "passed": true,
+              "detail": "Operational documentation must retain two existing local references without broken links"
+            }
+          },
+          "critical_pass": true
+        }
+      }
+    }
+  ],
+  "candidate_dir": "candidate/",
+  "report_path": "report.json",
+  "baseline": {
+    "train": {
+      "suite_id": "recursive-workbench-demo-v1:train",
+      "metrics": {
+        "app": 0.3333333333333333,
+        "docs": 0.0,
+        "workflow": 0.3333333333333333
+      },
+      "cases": {
+        "train.app.plain": {
+          "passed": true,
+          "detail": "Expected 10.00; received 10.00"
+        },
+        "train.app.half_cent": {
+          "passed": false,
+          "detail": "Expected 0.06; received 0.05"
+        },
+        "train.app.discount_tax": {
+          "passed": false,
+          "detail": "Expected 108.90; received 111.00"
+        },
+        "train.workflow.duplicate": {
+          "passed": false,
+          "detail": "Expected {'delivered': ['A'], 'attempts': 1, 'failed': 0, 'skipped': 1}; received {'delivered': ['A', 'A'], 'attempts': 2, 'failed': 0, 'skipped': 0}"
+        },
+        "train.workflow.transient": {
+          "passed": false,
+          "detail": "Expected {'delivered': ['B'], 'attempts': 2, 'failed': 0, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+        },
+        "train.workflow.terminal": {
+          "passed": true,
+          "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+        },
+        "train.docs.structure": {
+          "passed": false,
+          "detail": "Need >=200 characters and headings Objetivo, Uso, Recuperación, Validación"
+        },
+        "train.docs.source_links": {
+          "passed": false,
+          "detail": "Link both local pricing and workflow JSON; all local links must resolve inside the workspace"
+        },
+        "train.docs.configuration": {
+          "passed": false,
+          "detail": "Explain rounding, tax_after_discount, deduplicate, max_retries and retry_statuses"
+        },
+        "train.docs.recuperacion": {
+          "passed": false,
+          "detail": "recuperacion needs >=60 characters and at least one concrete checklist step"
+        },
+        "train.docs.validacion": {
+          "passed": false,
+          "detail": "validacion needs >=60 characters and at least one concrete checklist step"
+        }
+      },
+      "critical_pass": true
+    },
+    "holdout": {
+      "suite_id": "recursive-workbench-demo-v1:holdout",
+      "metrics": {
+        "app": 0.25,
+        "docs": 0.0,
+        "workflow": 0.4
+      },
+      "cases": {
+        "holdout.app.zero": {
+          "passed": true,
+          "detail": "Expected 0.00; received 0.00"
+        },
+        "holdout.app.round_up": {
+          "passed": false,
+          "detail": "Expected 24.19; received 24.18"
+        },
+        "holdout.app.discount_fraction": {
+          "passed": false,
+          "detail": "Expected 81.55; received 83.94"
+        },
+        "holdout.app.full_discount": {
+          "passed": false,
+          "detail": "Expected 0.00; received 8.82"
+        },
+        "holdout.workflow.rate_limit": {
+          "passed": false,
+          "detail": "Expected {'delivered': ['D'], 'attempts': 3, 'failed': 0, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+        },
+        "holdout.workflow.distinct_events": {
+          "passed": false,
+          "detail": "Expected {'delivered': ['E', 'F'], 'attempts': 2, 'failed': 0, 'skipped': 1}; received {'delivered': ['E', 'F', 'E'], 'attempts': 3, 'failed': 0, 'skipped': 0}"
+        },
+        "holdout.workflow.auth_terminal": {
+          "passed": true,
+          "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+        },
+        "holdout.workflow.retry_exhaustion": {
+          "passed": false,
+          "detail": "Expected {'delivered': [], 'attempts': 3, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+        },
+        "holdout.workflow.redelivery_after_failure": {
+          "passed": true,
+          "detail": "Expected {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}; received {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}"
+        },
+        "holdout.docs.pricing_contract": {
+          "passed": false,
+          "detail": "Document half_up rounding and discount/tax behavior"
+        },
+        "holdout.docs.retry_contract": {
+          "passed": false,
+          "detail": "Document terminal 400, transient 503 and the retry limit"
+        },
+        "holdout.docs.idempotency_contract": {
+          "passed": false,
+          "detail": "Document duplicate-event behavior using event_id"
+        },
+        "holdout.docs.link_integrity": {
+          "passed": false,
+          "detail": "Operational documentation must retain two existing local references without broken links"
+        }
+      },
+      "critical_pass": true
+    }
+  },
+  "final": {
+    "train": {
+      "suite_id": "recursive-workbench-demo-v1:train",
+      "metrics": {
+        "app": 1.0,
+        "docs": 1.0,
+        "workflow": 1.0
+      },
+      "cases": {
+        "train.app.plain": {
+          "passed": true,
+          "detail": "Expected 10.00; received 10.00"
+        },
+        "train.app.half_cent": {
+          "passed": true,
+          "detail": "Expected 0.06; received 0.06"
+        },
+        "train.app.discount_tax": {
+          "passed": true,
+          "detail": "Expected 108.90; received 108.90"
+        },
+        "train.workflow.duplicate": {
+          "passed": true,
+          "detail": "Expected {'delivered': ['A'], 'attempts': 1, 'failed': 0, 'skipped': 1}; received {'delivered': ['A'], 'attempts': 1, 'failed': 0, 'skipped': 1}"
+        },
+        "train.workflow.transient": {
+          "passed": true,
+          "detail": "Expected {'delivered': ['B'], 'attempts': 2, 'failed': 0, 'skipped': 0}; received {'delivered': ['B'], 'attempts': 2, 'failed': 0, 'skipped': 0}"
+        },
+        "train.workflow.terminal": {
+          "passed": true,
+          "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+        },
+        "train.docs.structure": {
+          "passed": true,
+          "detail": "Need >=200 characters and headings Objetivo, Uso, Recuperación, Validación"
+        },
+        "train.docs.source_links": {
+          "passed": true,
+          "detail": "Link both local pricing and workflow JSON; all local links must resolve inside the workspace"
+        },
+        "train.docs.configuration": {
+          "passed": true,
+          "detail": "Explain rounding, tax_after_discount, deduplicate, max_retries and retry_statuses"
+        },
+        "train.docs.recuperacion": {
+          "passed": true,
+          "detail": "recuperacion needs >=60 characters and at least one concrete checklist step"
+        },
+        "train.docs.validacion": {
+          "passed": true,
+          "detail": "validacion needs >=60 characters and at least one concrete checklist step"
+        }
+      },
+      "critical_pass": true
+    },
+    "holdout": {
+      "suite_id": "recursive-workbench-demo-v1:holdout",
+      "metrics": {
+        "app": 1.0,
+        "docs": 1.0,
+        "workflow": 1.0
+      },
+      "cases": {
+        "holdout.app.zero": {
+          "passed": true,
+          "detail": "Expected 0.00; received 0.00"
+        },
+        "holdout.app.round_up": {
+          "passed": true,
+          "detail": "Expected 24.19; received 24.19"
+        },
+        "holdout.app.discount_fraction": {
+          "passed": true,
+          "detail": "Expected 81.55; received 81.55"
+        },
+        "holdout.app.full_discount": {
+          "passed": true,
+          "detail": "Expected 0.00; received 0.00"
+        },
+        "holdout.workflow.rate_limit": {
+          "passed": true,
+          "detail": "Expected {'delivered': ['D'], 'attempts': 3, 'failed': 0, 'skipped': 0}; received {'delivered': ['D'], 'attempts': 3, 'failed': 0, 'skipped': 0}"
+        },
+        "holdout.workflow.distinct_events": {
+          "passed": true,
+          "detail": "Expected {'delivered': ['E', 'F'], 'attempts': 2, 'failed': 0, 'skipped': 1}; received {'delivered': ['E', 'F'], 'attempts': 2, 'failed': 0, 'skipped': 1}"
+        },
+        "holdout.workflow.auth_terminal": {
+          "passed": true,
+          "detail": "Expected {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 1, 'failed': 1, 'skipped': 0}"
+        },
+        "holdout.workflow.retry_exhaustion": {
+          "passed": true,
+          "detail": "Expected {'delivered': [], 'attempts': 3, 'failed': 1, 'skipped': 0}; received {'delivered': [], 'attempts': 3, 'failed': 1, 'skipped': 0}"
+        },
+        "holdout.workflow.redelivery_after_failure": {
+          "passed": true,
+          "detail": "Expected {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}; received {'delivered': ['I'], 'attempts': 2, 'failed': 1, 'skipped': 0}"
+        },
+        "holdout.docs.pricing_contract": {
+          "passed": true,
+          "detail": "Document half_up rounding and discount/tax behavior"
+        },
+        "holdout.docs.retry_contract": {
+          "passed": true,
+          "detail": "Document terminal 400, transient 503 and the retry limit"
+        },
+        "holdout.docs.idempotency_contract": {
+          "passed": true,
+          "detail": "Document duplicate-event behavior using event_id"
+        },
+        "holdout.docs.link_integrity": {
+          "passed": true,
+          "detail": "Operational documentation must retain two existing local references without broken links"
+        }
+      },
+      "critical_pass": true
+    }
+  },
+  "elapsed_seconds": 0.01,
+  "accepted": 3,
+  "source_unchanged": true
+}

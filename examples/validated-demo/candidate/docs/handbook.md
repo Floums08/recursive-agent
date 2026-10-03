@@ -1,0 +1,30 @@
+# Manual del ejemplo
+
+## Objetivo
+Demostrar una mejora medible de precios, documentación y un flujo simulado.
+Estos contratos sintéticos no demuestran capacidad general de programación ni
+una conexión real con un CRM.
+
+## Uso
+1. Revisa la [configuración de precios](../app/pricing.json): `rounding` debe ser
+   `half_up` y `tax_after_discount` debe ser `true`. Aplica el descuento antes
+   de calcular los impuestos y redondea el importe final a dos decimales.
+2. Revisa el [flujo de leads](../workflows/lead-routing.json): `deduplicate`
+   debe ser `true`, `max_retries` debe ser `2` y `retry_statuses` debe contener
+   `429`, `500`, `502`, `503` y `504`. Identifica cada evento por `event_id`.
+
+## Recuperación
+1. Ante un error transitorio `503`, reintenta hasta el límite `max_retries`;
+   un error terminal `400` no se reintenta. Conserva el `event_id` para que
+   reenviar el mismo evento no produzca un segundo lead.
+2. Si una propuesta falla la evaluación, conserva la versión anterior y
+   revisa el informe. Para un cambio desplegado manualmente, restaura el commit
+   aprobado anterior, vuelve a validar y registra el motivo de la restauración.
+
+## Validación
+1. Ejecuta la evaluación del proyecto con `python -m recursive_workbench run`
+   seguido de la ruta de configuración y `--provider demo`. Revisa `report.json`
+   y comprueba los casos de precios, documentación y flujo antes de promover.
+2. Verifica un precio con descuento e impuestos, un redondeo `half_up`, un
+   evento duplicado con el mismo `event_id`, un fallo `503` seguido de éxito
+   y un fallo `400` sin reintento. No aceptes ninguna regresión de casos.
